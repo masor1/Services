@@ -1,7 +1,12 @@
 package com.masorone.services
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.masorone.services.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,5 +22,10 @@ class MainActivity : AppCompatActivity() {
         binding.service.setOnClickListener {
             startService(MyService.newIntent(this))
         }
+
+        binding.foregroundService.setOnClickListener {
+            ContextCompat.startForegroundService(this, MyForegroundService.newIntent(this))
+        }
+
     }
 }
